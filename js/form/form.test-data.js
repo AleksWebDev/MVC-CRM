@@ -1,3 +1,4 @@
+//test data for inputs
 let data = [
     {
         nameSurename: 'Aleksandr Lavrov',
@@ -35,6 +36,8 @@ let data = [
     }
 ]
 
+
+//Getting random index
 function getRandomIndex(){
     const randomIndex = Math.floor(Math.random() * data.length);
     let elem = data[randomIndex];

@@ -1,6 +1,3 @@
-import * as testData from './form.test-data.js';
-
-// DOM Element of Form
 const elements = {
     formRegistration: document.getElementById('form'),
     nameInput: document.getElementById('name'),
@@ -10,13 +7,42 @@ const elements = {
     formGroup: document.querySelectorAll('.form-group .form-control'),
 }
 
-// Isert test data to the form's input
-function insertTestData(){
-    const randUser = testData.getRandomIndex();
-    elements.nameInput.value = randUser.nameSurename;
-    elements.phoneInput.value = '+' + parseInt(randUser.tel);
-    elements.emailInput.value  = randUser.email;
-    elements.coursesSelect.value = randUser.course;
+function insertTestData(data){
+    elements.nameInput.value = data.nameSurename;
+    elements.phoneInput.value = '+' + parseInt(data.tel);
+    elements.emailInput.value  = data.email;
+    elements.coursesSelect.value = data.course;
 }
 
-export {insertTestData, elements};
+function getValueForm(DB){
+
+    let id;
+    if(DB.length > 0){
+        id = DB[DB.length - 1].id + 1;
+    }else{
+        id = 1;
+    }
+
+    const date = new Date();
+    const option = {
+        year: 'numeric',
+        month:  'numeric',
+        day: 'numeric',
+    }
+
+    const currentDate = new Intl.DateTimeFormat('ru-RU', option).format(date);
+
+    const userData = {
+        id: id,
+        nameSurename: elements.nameInput.value,
+        tel: elements.phoneInput.value,
+        email: elements.emailInput.value,
+        course: elements.coursesSelect.value,
+        status: ['новый', 'в работе', 'завершенный'],
+        time: currentDate,
+    }
+    return userData;
+
+}
+
+export {elements, insertTestData, getValueForm}
