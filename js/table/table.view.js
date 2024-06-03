@@ -10,7 +10,7 @@ function fillHTML(data){
 
 function renderTableHTML(elem){
     return `
-    <tr>
+    <tr class='request-item'>
     <th scope="row">${elem.id}</th>
     <td>${elem.time}</td>
     <td>${elem.course}</td>

@@ -6,3 +6,7 @@ window.addEventListener('DOMContentLoaded', function(){
         table.fillHTML(model.requestDB);
     }
 })
+
+table.tableElements.table.addEventListener('click', function(e){
+    console.log(e.target);
+})
