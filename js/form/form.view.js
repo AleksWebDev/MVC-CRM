@@ -23,14 +23,8 @@ function getValueForm(DB){
         id = 1;
     }
 
-    const date = new Date();
-    const option = {
-        year: 'numeric',
-        month:  'numeric',
-        day: 'numeric',
-    }
-
-    const currentDate = new Intl.DateTimeFormat('ru-RU', option).format(date);
+    const dateDate = new Date().toLocaleDateString();
+    const currentTime = new Date().toLocaleTimeString();
 
     const userData = {
         id: id,
@@ -38,8 +32,8 @@ function getValueForm(DB){
         tel: elements.phoneInput.value,
         email: elements.emailInput.value,
         course: elements.coursesSelect.value,
-        status: ['новый', 'в работе', 'завершенный'],
-        time: currentDate,
+        status: 'new',
+        time: [dateDate, currentTime],
     }
     return userData;
 

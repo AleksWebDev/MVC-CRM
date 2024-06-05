@@ -799,3 +799,23 @@ body.with-nav .left-panel {
 	overflow-x: hidden;
 	overflow-y: auto;
 }
+
+.badge{
+	padding: 10px;
+
+}
+
+.badge-new{
+	background-color: #230ac9;
+	color: #fff;
+}
+
+.badge-inwork{
+	background-color: #d0d404;
+	color: #000;
+}
+
+.badge-success{
+	background-color: #1fbf1f;
+	color: #fff;
+}
