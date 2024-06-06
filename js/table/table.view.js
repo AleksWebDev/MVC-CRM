@@ -1,17 +1,14 @@
 const tableElements = {
     tableList: document.getElementById('tbody'),
-    badgeStatus: document.querySelector('.badge'),
-}
-
-function checkStatus(data){
-    data.forEach(item => {
-        if(item.status === 'complete'){
-            tableElements.badgeStatus.classList.remove();
-        }
-    })
+    filterProduct: document.getElementById('productSelect'),
+    topStatusBar: document.getElementById('topStatusBar'),
+    leftStatusLinks: document.querySelectorAll('[data-role="left-status"]'),
+    leftPanelNav: document.querySelector('.left-panel__navigation'),
+    badgeNew: document.querySelector('#badge-new'),
 }
 
 function fillHTML(data){
+    tableElements.tableList.innerHTML = '';
     data.forEach(element => {
         tableElements.tableList.innerHTML += renderTableHTML(element);
     });
@@ -43,15 +40,23 @@ function renderTableHTML(elem){
     `
 }
 
-function saveIdRequestLS(target){
-    if(target.classList.contains('btn-edit')){
-        const targetId = parseInt(target.dataset.set);
-        //Saving id edit element to LocalStorage
-        localStorage.setItem('id', JSON.stringify(targetId));
+function updateTopStatusBar(value){
+    tableElements.topStatusBar.querySelectorAll('a').forEach(item => {item.classList.remove('active')});
+    tableElements.topStatusBar.querySelector(`a[data-value="${value}"]`).classList.add('active');
+
+    tableElements.leftStatusLinks.forEach(item => {item.classList.remove('active')});
+    tableElements.leftPanelNav.querySelector(`a[data-value="${value}"]`).classList.add('active');
+}
+
+function renderBadgeNew(number){
+    tableElements.badgeNew.innerText = number;
+
+    if(number == 0){
+        tableElements.badgeNew.classList.add('none');
     }
 }
 
-export {tableElements, fillHTML, renderTableHTML, saveIdRequestLS, checkStatus};
+export {tableElements, fillHTML, renderTableHTML, updateTopStatusBar, renderBadgeNew};
 
 
 

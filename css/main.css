@@ -819,3 +819,7 @@ body.with-nav .left-panel {
 	background-color: #1fbf1f;
 	color: #fff;
 }
+
+.none{
+	display: none !important;
+}
